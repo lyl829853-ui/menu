@@ -1,0 +1,24 @@
+.menu-item {
+  list-style: none;
+  position: relative;
+}
+
+.menu-item a {
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-item a:active {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.has-children .menu-link {
+  cursor: pointer;
+}
+
+/* Accessibility */
+.menu-link:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

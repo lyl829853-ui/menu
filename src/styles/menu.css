@@ -1,0 +1,222 @@
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.menu-vertical {
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.menu-light {
+  background-color: var(--bg-light);
+}
+
+.menu-dark {
+  background-color: var(--bg-dark);
+}
+
+/* Horizontal Menu Styling */
+.menu-horizontal .menu-item {
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.menu-horizontal .menu-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.menu-dark .menu-horizontal .menu-link {
+  color: var(--text-dark);
+}
+
+.menu-horizontal .menu-link:hover {
+  background-color: var(--bg-light-hover);
+  border-bottom-color: var(--primary-color);
+}
+
+.menu-dark .menu-horizontal .menu-link:hover {
+  background-color: var(--bg-dark-hover);
+}
+
+.menu-horizontal .submenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  min-width: 200px;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin-top: 0;
+  padding: var(--spacing-sm) 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.menu-dark .menu-horizontal .submenu {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.menu-horizontal .menu-item.open > .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-horizontal .submenu .menu-item {
+  margin: 0;
+}
+
+.menu-horizontal .submenu .menu-link {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: none;
+  color: var(--text-light);
+}
+
+.menu-dark .menu-horizontal .submenu .menu-link {
+  color: var(--text-dark);
+}
+
+.menu-horizontal .submenu .menu-link:hover {
+  background-color: var(--bg-light-hover);
+  border-bottom: none;
+}
+
+.menu-dark .menu-horizontal .submenu .menu-link:hover {
+  background-color: var(--bg-dark-hover);
+}
+
+/* Vertical Menu Styling */
+.menu-vertical .menu-item {
+  position: relative;
+}
+
+.menu-vertical .menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  background-color: var(--bg-light);
+  border-radius: var(--border-radius);
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.menu-dark .menu-vertical .menu-link {
+  color: var(--text-dark);
+  background-color: var(--bg-dark-hover);
+}
+
+.menu-vertical .menu-link:hover {
+  background-color: var(--bg-light-hover);
+  border-left-color: var(--primary-color);
+}
+
+.menu-dark .menu-vertical .menu-link:hover {
+  background-color: #353535;
+}
+
+.menu-vertical .submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  list-style: none;
+  margin-top: var(--spacing-sm);
+  padding-right: var(--spacing-md);
+}
+
+.menu-vertical .menu-item.open > .submenu {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.menu-vertical .submenu .menu-item {
+  margin-bottom: var(--spacing-sm);
+}
+
+.menu-vertical .submenu .menu-link {
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 0.9rem;
+  background-color: rgba(0, 123, 255, 0.1);
+  border: 1px solid var(--border-light);
+}
+
+.menu-dark .menu-vertical .submenu .menu-link {
+  background-color: rgba(0, 123, 255, 0.2);
+  border-color: var(--border-dark);
+}
+
+.menu-vertical .submenu .menu-link:hover {
+  background-color: rgba(0, 123, 255, 0.2);
+  border-left-color: var(--primary-color);
+}
+
+.menu-dark .menu-vertical .submenu .menu-link:hover {
+  background-color: rgba(0, 123, 255, 0.3);
+}
+
+/* Badge Styling */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--danger-color);
+  color: white;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Arrow Icon */
+.arrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-item.open > .menu-link .arrow {
+  transform: rotate(180deg);
+}
+
+.menu-vertical .menu-item.open > .menu-link .arrow {
+  transform: rotate(180deg);
+}
